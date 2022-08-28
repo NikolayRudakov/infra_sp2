@@ -38,15 +38,11 @@ python -m pip install --upgrade pip
 
 Переходим в папку с файлом docker-compose.yaml:
 
-```
-cd infra
-```
+`cd infra`
 
 Поднимаем контейнеры (infra_db_1, infra_web_1, infra_nginx_1):
 
-```
-docker-compose up -d --build
-```
+`docker-compose up -d --build`
 
 Выполняем миграции:
 
@@ -57,27 +53,19 @@ docker-compose exec web python manage.py migrate
 
 Создаем суперпользователя:
 
-```
-docker-compose exec web python manage.py createsuperuser
-```
+`docker-compose exec web python manage.py createsuperuser`
 
 Собираем статику:
 
-```
-docker-compose exec web python manage.py collectstatic --no-input
-```
+`docker-compose exec web python manage.py collectstatic --no-input`
 
 Создаем дамп базы данных (нет в текущем репозитории):
 
-```
-docker-compose exec web python manage.py dumpdata > dumpPostrgeSQL.json
-```
+`docker-compose exec web python manage.py dumpdata > dumpPostrgeSQL.json`
 
 Останавливаем контейнеры:
 
-```
-docker-compose down -v
-```
+`docker-compose down -v`
 
 #### **Шаблон наполнения .env (не включен в текущий репозиторий) расположенный по пути infra/.env**
 
